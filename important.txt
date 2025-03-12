@@ -1,0 +1,2 @@
+Nerd fonts to install:
+https://aur.archlinux.org/nerd-fonts-git.git
