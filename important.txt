@@ -1,2 +1,7 @@
 Nerd fonts to install:
 https://aur.archlinux.org/nerd-fonts-git.git
+
+install dotfiles from:
+https://github.com/JaKooLit/Hyprland-Dots
+
+
