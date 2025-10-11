@@ -1,2 +1,2 @@
 # dotfiles
-All my dotfiles for Arch (I use arch btw)
+All my dotfiles for NixOS (i use Nix btw :) )
