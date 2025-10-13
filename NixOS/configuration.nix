@@ -10,14 +10,10 @@ in
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
-      (import "${home-manager}/nixos")
+      ./home.nix
     ];
   
-  home-manager.users.adam = { pkgs, ...}: {
-    home.packages = [ pkgs.atool pkgs.httpie ];
-    programs.bash.enable = true;
-  home.stateVersion = "25.05";
-  };
+
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
@@ -99,6 +95,7 @@ in
 
   # Install firefox.
   programs.firefox.enable = true;
+  programs.niri.enable = true;
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
@@ -110,7 +107,6 @@ in
   #  wget
     discord
     git
-    niri
     libreoffice
     hunspell
     hunspellDicts.de_DE
