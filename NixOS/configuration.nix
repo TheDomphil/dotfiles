@@ -102,6 +102,8 @@ in
     ];
   };
 
+  programs.niri.enable = true;
+  
   # Install firefox.
   programs.firefox.enable = true;
 
@@ -115,7 +117,6 @@ in
   #  wget
     discord
     git
-    niri
     libreoffice 
     hunspell #For Libreoffice
     hunspellDicts.de_DE #Language packages for Libreoffice
