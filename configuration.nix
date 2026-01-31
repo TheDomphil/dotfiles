@@ -3,8 +3,9 @@
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
 { config, pkgs, lib, ... }:
+
 let
-  home-manager = builtins.fetchTarball https://github.com/nix-community/home-manager/archive/release-25.05.tar.gz;
+  home-manager = builtins.fetchTarball https://github.com/nix-community/home-manager/archive/release-25.11.tar.gz;
 in
 {
   imports =
@@ -13,16 +14,20 @@ in
       (import "${home-manager}/nixos")
     ];
   
-  home-manager.users.adam = { pkgs, ...}: {
-    home.packages = [ pkgs.atool pkgs.httpie ];
-    programs.bash = {
-    enable = true;
-    shellAliases = {
-      btw = "echo i use NixOS btw";
-    };
-    };
-  home.stateVersion = "25.05";
-  };
+  home-manager.useUserPackages = true;
+
+  home-manager.useGlobalPkgs = true;
+
+  home-manager.backupFileExtension = "backup";
+  home-manager.users.adam = import ./home.nix;
+  
+  #users.users.adam.isNormalUser = true;
+  #home-manager.users.adam = { pkgs, ... }: {
+  #  home.packages = [ pkgs.atool pkgs.httpie ];
+  #  programs.bash.enable = true;
+  #  home.stateVersion = "25.11";
+  #};
+
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
@@ -41,7 +46,7 @@ in
   time.timeZone = "Europe/Vienna";
 
   # Select internationalisation properties.
-  i18n.defaultLocale = "de_AT.UTF-8";
+  i18n.defaultLocale = "en_GB.UTF-8";
 
   i18n.extraLocaleSettings = {
     LC_ADDRESS = "de_AT.UTF-8";
@@ -56,12 +61,11 @@ in
   };
 
   # Enable the X11 windowing system.
-  # You can disable this if you're only using the Wayland session.
   services.xserver.enable = true;
 
-  # Enable the KDE Plasma Desktop Environment.
-  services.displayManager.sddm.enable = true;
-  services.desktopManager.plasma6.enable = true;
+  # Enable the GNOME Desktop Environment.
+  services.xserver.displayManager.gdm.enable = true;
+  services.xserver.desktopManager.gnome.enable = true;
 
   # Configure keymap in X11
   services.xserver.xkb = {
@@ -94,10 +98,9 @@ in
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.adam = {
     isNormalUser = true;
-    description = "Adam";
+    description = "adam";
     extraGroups = [ "networkmanager" "wheel" ];
     packages = with pkgs; [
-      kdePackages.kate
     #  thunderbird
     ];
   };
@@ -113,14 +116,6 @@ in
   environment.systemPackages = with pkgs; [
   #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
   #  wget
-    discord
-    git
-    niri
-    libreoffice 
-    hunspell #For Libreoffice
-    hunspellDicts.de_DE #Language packages for Libreoffice
-    hunspellDicts.en_US #-"-
-    thunderbird
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
@@ -148,6 +143,9 @@ in
   # this value at the release version of the first install of this system.
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
-  system.stateVersion = "25.05"; # Did you read the comment?
-  networking.networkmanager.wifi.powersave = false;
+  system.stateVersion = "25.11"; # Did you read the comment?
+
+
 }
+
+
