@@ -20,13 +20,6 @@ in
 
   home-manager.backupFileExtension = "backup";
   home-manager.users.adam = import ./home.nix;
-  
-  #users.users.adam.isNormalUser = true;
-  #home-manager.users.adam = { pkgs, ... }: {
-  #  home.packages = [ pkgs.atool pkgs.httpie ];
-  #  programs.bash.enable = true;
-  #  home.stateVersion = "25.11";
-  #};
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
@@ -64,9 +57,9 @@ in
   services.xserver.enable = true;
 
   # Enable the GNOME Desktop Environment.
-  services.xserver.displayManager.gdm.enable = true;
-  services.xserver.desktopManager.gnome.enable = true;
-
+  services.displayManager.gdm.enable = true; 
+  services.desktopManager.gnome.enable = true; #"true" for gnome
+ 
   # Configure keymap in X11
   services.xserver.xkb = {
     layout = "at";
@@ -105,8 +98,7 @@ in
     ];
   };
 
-  # Install firefox.
-  programs.firefox.enable = true;
+  programs.niri.enable = true;
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
@@ -116,6 +108,9 @@ in
   environment.systemPackages = with pkgs; [
   #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
   #  wget
+    xwayland
+    brightnessctl
+    brave
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
@@ -143,9 +138,7 @@ in
   # this value at the release version of the first install of this system.
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
-  system.stateVersion = "25.11"; # Did you read the comment?
-
-
+  system.stateVersion = "25.11"; 
 }
 
 
