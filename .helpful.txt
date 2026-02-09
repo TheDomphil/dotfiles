@@ -1,0 +1,22 @@
+This is just a helpful text file containing stuff i learned in Nixos
+
+Programs are stored in "/etc/profiles/per-user/<yourname>/bin/<programname>
+
+----------------------------------------------------------------------------
+GIT
+
+To even run git first you need to:
+
+eval $(ssh-agent)
+
+then you can add your key:
+
+ssh-add <path/to/ssh/key> (typically in ~/.ssh/<keyname>)
+
+then:
+
+git add .
+git commit -m "Message"
+git push
+
+
