@@ -12,6 +12,8 @@
     shellAliases = {
       btw  = "echo I use NixOS btw";
       nrs = "sudo nixos-rebuild switch";
+      ls = "ls -a --color=auto";
+      network = "nmtui";
     };
   };
   
@@ -19,7 +21,7 @@
   programs.alacritty = {
     enable = true;
     settings = {
-      window.opacity = 0.9;
+      window.opacity = 0.75;
       #font.normal = {
       #  family = "JetBrains Mono";
       #  style = "Regular";
@@ -58,10 +60,19 @@
       #colors.background = "00000000";
     };
   };
+  
+  #Waybar
+  programs.waybar = {
+    enable = true;
+  };
+
+  #Btop
+  programs.btop = {
+    enable = true;
+  };
  
   #Niri and Setup
   programs.swaylock.enable = true; # Super+Alt+L in the default setting (screen locker)
-  programs.waybar.enable = true; # launch on startup in the default setting (bar)
   services.mako.enable = true; # notification daemon
   services.swayidle.enable = true; # idle management daemon
   services.polkit-gnome.enable = true; # polkit
