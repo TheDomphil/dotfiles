@@ -77,6 +77,15 @@ in
     alsa.enable = true;
     alsa.support32Bit = true;
     pulse.enable = true;
+    #Low-latency settings
+    extraConfig.pipewire."92-low-latency" = {
+      "context.properties" = {
+        "default.clock.rate" = 48000;
+        "default.clock.quantum" = 512; #lower this to 256 for even less delay
+        "default.clock.min-quantum" = 32;
+        "default.clock.max-quantum" = 1024;
+      };
+    };
     # If you want to use JACK applications, uncomment this
     #jack.enable = true;
 
@@ -84,6 +93,7 @@ in
     # no need to redefine it in your config for now)
     #media-session.enable = true;
   };
+
 
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
@@ -111,6 +121,8 @@ in
     xwayland
     brightnessctl
     brave
+    pavucontrol
+    cava
   ];
   
   # Fonts  

@@ -70,13 +70,26 @@
   programs.btop = {
     enable = true;
   };
- 
+  
+  #Cava
+  #programs.cava = {
+  #  enable = true;
+  #  settings = {
+  #    general.framerate = 60;
+  #    general.autosens = 1;
+  #    input.method = "pipewire";
+      #input.source = "auto";
+  #    input.latency = 0;
+  #    input.sample_rate = 44100;
+  #  };
+  #};
+  
   #Niri and Setup
   programs.swaylock.enable = true; # Super+Alt+L in the default setting (screen locker)
   services.mako.enable = true; # notification daemon
   services.swayidle.enable = true; # idle management daemon
   services.polkit-gnome.enable = true; # polkit
-
+  
   #Installing packages
   home.packages = with pkgs; [
     bat
