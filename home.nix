@@ -72,8 +72,8 @@
   };
   
   #Cava
-  #programs.cava = {
-  #  enable = true;
+  programs.cava = {
+    enable = true;
   #  settings = {
   #    general.framerate = 60;
   #    general.autosens = 1;
@@ -82,7 +82,7 @@
   #    input.latency = 0;
   #    input.sample_rate = 44100;
   #  };
-  #};
+  };
   
   #Niri and Setup
   programs.swaylock.enable = true; # Super+Alt+L in the default setting (screen locker)
