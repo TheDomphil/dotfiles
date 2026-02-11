@@ -69,8 +69,18 @@ in
   # Enable CUPS to print documents.
   services.printing.enable = true;
 
+  # MPD Installation
+  services.mpd = {
+    enable = true;
+    extraConfig = ''
+      audio_output {
+        type "pipewire"
+        name "My PipeWire Output"
+      }
+    '';
+  };
+
   # Enable sound with pipewire.
-  services.pulseaudio.enable = false;
   security.rtkit.enable = true;
   services.pipewire = {
     enable = true;

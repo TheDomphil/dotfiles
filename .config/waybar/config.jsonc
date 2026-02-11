@@ -11,7 +11,9 @@
         //"sway/mode",
         //"sway/scratchpad"
         //"custom/media",
-        "cava"
+        "cava",
+        "mpd",
+        "niri/window"
     ],
     "modules-center": [
         //"sway/window",
@@ -242,5 +244,13 @@
         "actions": {
                    "on-click-right": "mode"
                    }
-     }
+    },
+    "niri/window": {
+	"format": "{}",
+	"rewrite": {
+	    //"(.*) - Brave": "🌎 $1",
+            "(.*) - Brave": "Brave - Browser",
+            "(.*) - bash": "Terminal"
+	}
+    }    
 }
