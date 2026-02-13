@@ -8,32 +8,19 @@
     // Choose the order of the modules
     "modules-left": [
         "niri/workspaces",
-        //"sway/mode",
-        //"sway/scratchpad"
-        //"custom/media",
         "cava",
-        "mpd",
-        "niri/window"
+        "mpris"
     ],
     "modules-center": [
-        //"sway/window",
 	"clock"
     ],
     "modules-right": [
-        //"mpd",  // <-- try this shit out
-        //"idle_inhibitor",
         "pulseaudio",
         "network",
-        //"power-profiles-daemon",
         "cpu",
         "memory",
         "temperature",
-        //"backlight",
-        //"keyboard-state",
-        //"sway/language",
         "battery",
-        //"battery#bat2",
-        //"tray",
         "custom/power"
     ],
     //Modules configuration
@@ -43,74 +30,14 @@
         "format-icons": {
             // Named workspaces
             // (you need to configure them in niri)
-            "browser": "",
-            "discord": "",
-            "chat": "<b></b>",
-
+            //"browser": "",
+            //"discord": "",
+            //"chat": "<b></b>",
+	    "index": "1"
             // Icons by state
-            "active": "",
-            "default": ""
+            //"active": "",
+            //"default": ""
         }
-    },
-    "keyboard-state": {
-        "numlock": true,
-        "capslock": true,
-        "format": "{name} {icon}",
-        "format-icons": {
-            "locked": "",
-            "unlocked": ""
-        }
-    },
-    "sway/mode": {
-        "format": "<span style=\"italic\">{}</span>"
-    },
-    "sway/scratchpad": {
-        "format": "{icon} {count}",
-        "show-empty": false,
-        "format-icons": ["", ""],
-        "tooltip": true,
-        "tooltip-format": "{app}: {title}"
-    },
-    "mpd": {
-        "format": "{stateIcon} {consumeIcon}{randomIcon}{repeatIcon}{singleIcon}{artist} - {album} - {title} ({elapsedTime:%M:%S}/{totalTime:%M:%S}) ⸨{songPosition}|{queueLength}⸩ {volume}% ",
-        "format-disconnected": "Disconnected ",
-        "format-stopped": "{consumeIcon}{randomIcon}{repeatIcon}{singleIcon}Stopped ",
-        "unknown-tag": "N/A",
-        "interval": 5,
-        "consume-icons": {
-            "on": " "
-        },
-        "random-icons": {
-            "off": "<span color=\"#f53c3c\"></span> ",
-            "on": " "
-        },
-        "repeat-icons": {
-            "on": " "
-        },
-        "single-icons": {
-            "on": "1 "
-        },
-        "state-icons": {
-            "paused": "",
-            "playing": ""
-        },
-        "tooltip-format": "MPD (connected)",
-        "tooltip-format-disconnected": "MPD (disconnected)"
-    },
-    "idle_inhibitor": {
-        "format": "{icon}",
-        "format-icons": {
-            "activated": "",
-            "deactivated": ""
-        }
-    },
-    "tray": {
-        // "icon-size": 21,
-        "spacing": 10,
-        // "icons": {
-        //   "blueman": "bluetooth",
-        //   "TelegramDesktop": "$HOME/.local/share/icons/hicolor/16x16/apps/telegram.png"
-        // }
     },
     "clock": {
     "format": "{:%H:%M}",
@@ -131,10 +58,6 @@
                 },
     "actions":  {
                 "on-click-right": "mode",
-                "on-scroll-up": "tz_up",
-                "on-scroll-down": "tz_down",
-                "on-scroll-up": "shift_up",
-                "on-scroll-down": "shift_down"
                 }
     },
     "cpu": {
@@ -153,11 +76,6 @@
         "format": "{temperatureC}°C {icon}",
         "format-icons": ["", "", ""]
     },
-    "backlight": {
-        // "device": "acpi_video1",
-        "format": "{percent}% {icon}",
-        "format-icons": ["", "", "", "", "", "", "", "", ""]
-    },
     "battery": {
         "states": {
             // "good": 95,
@@ -172,20 +90,6 @@
         // "format-good": "", // An empty format will hide the module
         // "format-full": "",
         "format-icons": ["", "", "", "", ""]
-    },
-    "battery#bat2": {
-        "bat": "BAT2"
-    },
-    "power-profiles-daemon": {
-      "format": "{icon}",
-      "tooltip-format": "Power profile: {profile}\nDriver: {driver}",
-      "tooltip": true,
-      "format-icons": {
-        "default": "",
-        "performance": "",
-        "balanced": "",
-        "power-saver": ""
-      }
     },
     "network": {
         // "interface": "wlp2*", // (Optional) To force the use of this interface
@@ -222,35 +126,42 @@
 	"on-click": "swaylock"
     },
     "cava": {
-        // "cava_config": "$XDG_CONFIG_HOME/cava/cava.conf",
+        "cava_config": "/home/adam/.config/cava/config",
         "framerate": 30,
         "autosens": 1,
-        "sensitivity": 100,
+        "sensitivity": 5,
         "bars": 14,
         "lower_cutoff_freq": 50,
         "higher_cutoff_freq": 10000,
         "hide_on_silence": false,
-        // "format_silent": "quiet",
-        "method": "pulse",
-        "source": "auto",
-        "stereo": true,
+        //"sleep_timer": 5,
+        // "format_silent": "quiet", <- Shows what the sound is right now from microphone
+        "format_silent": "▁▁▁▁▁▁▁▁▁▁▁▁▁▁",
+        //"method": "pipewire",
+        //"source": "auto",
+        "stereo": false,
         "reverse": false,
         "bar_delimiter": 0,
         "monstercat": false,
         "waves": false,
         "noise_reduction": 0.77,
-        "input_delay": 2,
+        "input_delay": 4,
         "format-icons": ["▁", "▂", "▃", "▄", "▅", "▆", "▇", "█" ],
         "actions": {
                    "on-click-right": "mode"
                    }
     },
-    "niri/window": {
-	"format": "{}",
-	"rewrite": {
-	    //"(.*) - Brave": "🌎 $1",
-            "(.*) - Brave": "Brave - Browser",
-            "(.*) - bash": "Terminal"
-	}
+    "mpris": {
+	"format": "{player_icon}  {title}",
+	"format-paused": "{status_icon} <i>{title}</i>",
+        "max-length": 35,
+	"player-icons": {
+	    "default": "▶",
+	    "mpv": "🎵"
+	},
+	"status-icons": {
+	    "paused": "⏸"
+	},
+	// "ignored-players": ["firefox"]
     }    
 }
