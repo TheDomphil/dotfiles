@@ -4,18 +4,19 @@
     // "position": "bottom", // Waybar position (top|bottom|left|right)
     "height": 35, // Waybar height (to be removed for auto height)
     // "width": 1280, // Waybar width
-    "spacing": 4, // Gaps between modules (4px)
+    //"spacing": 4, // Gaps between modules (4px)
     // Choose the order of the modules
     "modules-left": [
         "niri/workspaces",
         "cava",
-        "mpris"
+        "mpris",
+        "pulseaudio"
     ],
     "modules-center": [
 	"clock"
     ],
     "modules-right": [
-        "pulseaudio",
+        //"pulseaudio",
         "network",
         "cpu",
         "memory",
@@ -40,7 +41,7 @@
         }
     },
     "clock": {
-    "format": "{:%H:%M}",
+    "format": "{:%d.%m.%y | %H:%M}",
     "format-alt": "{:%A, %B %d, %Y (%R)}",
     "tooltip-format": "<tt><small>{calendar}</small></tt>",
     "calendar": {
@@ -101,12 +102,26 @@
         //"format-alt": "{ifname}: {ipaddr}/{cidr}",
         "on-click": "/etc/profiles/per-user/adam/bin/alacritty -e nmtui"
     },
+    "mpris": {
+        "format": "{player_icon} {title}",
+        "format-paused": "{status_icon} {title}",
+        "max-length": 35,
+        "ellipsis": "…",
+        "player-icons": {
+            "default": "▶",
+            "mpv": "🎵"
+        },
+        "status-icons": {
+            "paused": "⏸"
+        },
+        // "ignored-players": ["firefox"]
+    },
     "pulseaudio": {
         // "scroll-step": 1, // %, can be a float
         "format": "{volume}% {icon} {format_source}",
         "format-bluetooth": "{volume}% {icon} {format_source}",
-        "format-bluetooth-muted": " {icon} {format_source}",
-        "format-muted": " {format_source}",
+        "format-bluetooth-muted": " {icon} {format_source}",
+        "format-muted": " {format_source}",
         "format-source": "{volume}% ",
         "format-source-muted": "",
         "format-icons": {
@@ -150,18 +165,5 @@
         "actions": {
                    "on-click-right": "mode"
                    }
-    },
-    "mpris": {
-	"format": "{player_icon}  {title}",
-	"format-paused": "{status_icon} <i>{title}</i>",
-        "max-length": 35,
-	"player-icons": {
-	    "default": "▶",
-	    "mpv": "🎵"
-	},
-	"status-icons": {
-	    "paused": "⏸"
-	},
-	// "ignored-players": ["firefox"]
     }    
 }

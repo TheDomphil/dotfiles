@@ -44,19 +44,15 @@ button:hover {
     background: inherit;
 }
 
-/* you can set a style on hover for any module like this */
-#pulseaudio:hover {
-    background-color: #a37800;
-}
-
 #workspaces button {
     padding: 0 5px;
     background-color: transparent;
     color: #ffffff;
 }
 
+/* Workspace Index hover*/
 #workspaces button:hover {
-    background: rgba(0, 0, 0, 0.2);
+    background: rgba(255, 255, 255, 1);
 }
 
 #workspaces button.focused, #workspaces button.active {
@@ -91,10 +87,6 @@ button:hover {
 /* If workspaces is the rightmost module, omit right margin */
 .modules-right > widget:last-child > #workspaces {
     margin-right: 0;
-}
-
-#clock {
-    background-color: #64727D;
 }
 
 #battery {
@@ -134,24 +126,6 @@ button:hover {
     background-color: #9b59b6;
 }
 
-#network {
-    background-color: #2980b9;
-}
-
-#network.disconnected {
-    background-color: #f53c3c;
-}
-
-#pulseaudio {
-    background-color: #f1c40f;
-    color: #000000;
-}
-
-#pulseaudio.muted {
-    background-color: #90b1b1;
-    color: #2a5c45;
-}
-
 #temperature {
     background-color: #f0932b;
 }
@@ -161,9 +135,58 @@ button:hover {
 }
 
 #cava {
-    background-color: #849984;
+    font-family: monospace;
+    /*background-color: #849984;*/
+    border-radius: 15px 15px 0px 0px;
+    background: linear-gradient(180deg,
+        rgba(132, 153, 132, 0.8),
+        rgba(132, 153, 132, 0));
+    padding: 0px 10px 0px 10px;
+    margin-left: 20px;
 }
 
-#cava.silent {
-    background-color: #849984;
+#mpris {
+    min-width: 200px;
+    border-radius: 15px 15px 0px 0px;
+    background: linear-gradient(180deg,
+        rgba(132, 153, 132, 0.8),
+        rgba(132, 153, 132, 0));
+    padding: 0px 5px 0px 5px;
+    margin-left: 10px;
+}
+
+#pulseaudio {
+    border-radius: 15px 15px 0px 0px;
+    background: linear-gradient(180deg,
+        rgba(132, 153, 132, 0.8),
+        rgba(132, 153, 132, 0));
+    padding: 0px 10px 0px 10px;
+    margin-left: 10px;
+}
+
+#pulseaudio:hover {
+    font-weight: bold;
+}
+
+#pulseaudio.muted {
+    border-radius: 15px 15px 0px 0px;
+    background: linear-gradient(180deg,
+        rgba(52, 51, 48, 0.8),
+        rgba(52, 51, 48, 0));
+}
+
+#clock {
+    border-radius: 15px 15px 0px 0px;
+    background: linear-gradient(180deg,
+        rgba(232, 135, 30, 0.8),
+        rgba(232, 135, 30, 0));
+    padding: 0px 15px 0px 15px;
+}
+
+#network {
+    background-color: #2980b9;
+}
+
+#network.disconnected {
+    background-color: #f53c3c;
 }
