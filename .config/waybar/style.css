@@ -66,14 +66,6 @@ button:hover {
     background-color: #eb4d4b;
 }
 
-#clock,
-#battery,
-#cpu,
-#memory,
-#temperature,
-#network,
-#pulseaudio,
-
 #window,
 #workspaces {
     margin: 0 4px;
@@ -87,51 +79,6 @@ button:hover {
 /* If workspaces is the rightmost module, omit right margin */
 .modules-right > widget:last-child > #workspaces {
     margin-right: 0;
-}
-
-#battery {
-    background-color: #ffffff;
-    color: #000000;
-}
-
-#battery.charging, #battery.plugged {
-    color: #ffffff;
-    background-color: #26A65B;
-}
-
-@keyframes blink {
-    to {
-        background-color: #ffffff;
-        color: #000000;
-    }
-}
-
-/* Using steps() instead of linear as a timing function to limit cpu usage */
-#battery.critical:not(.charging) {
-    background-color: #f53c3c;
-    color: #ffffff;
-    animation-name: blink;
-    animation-duration: 0.5s;
-    animation-timing-function: steps(12);
-    animation-iteration-count: infinite;
-    animation-direction: alternate;
-}
-
-#cpu {
-    background-color: #2ecc71;
-    color: #000000;
-}
-
-#memory {
-    background-color: #9b59b6;
-}
-
-#temperature {
-    background-color: #f0932b;
-}
-
-#temperature.critical {
-    background-color: #eb4d4b;
 }
 
 #cava {
@@ -183,10 +130,52 @@ button:hover {
     padding: 0px 15px 0px 15px;
 }
 
-#network {
-    background-color: #2980b9;
+#network, #cpu, #memory, #battery, #temperature {
+    border-radius: 15px 15px 0px 0px;
+    background: linear-gradient(180deg,
+        rgba(117, 72, 94, 0.8),
+        rgba(117, 72, 94, 0));
+    padding: 0px 15px 0px 15px;
+    margin-right: 10px;
 }
 
-#network.disconnected {
-    background-color: #f53c3c;
+#battery.charging, #battery.plugged {
+    background: linear-gradient(180deg,
+        rgba(0, 145, 110, 0.8),
+        rgba(0, 145, 110, 0));
+}
+
+@keyframes blink {
+    to {
+        background-color: #ffffff;
+        color: #000000;
+    }
+}
+
+/* Using steps() instead of linear as a timing function to limit cpu usage*/
+#battery.critical:not(.charging) {
+    background: linear-gradient(180deg,
+        rgba(217, 30, 54, 0.8),
+        rgba(217, 30, 54, 0));
+    color: #ffffff;
+    animation-name: blink;
+    animation-duration: 0.5s;
+    animation-timing-function: steps(12);
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+#temperature.critical {
+    background: linear-gradient(180deg,
+        rgba(217, 30, 54, 0.8),
+        rgba(217, 30, 54, 0));
+}
+
+#custom-power {
+    font-family: FontAwesome;
+    font-size: 18px;
+    border-radius: 15px 15px 0px 0px;
+    background: linear-gradient(180deg,
+        rgba(31, 86, 115, 0.8),
+        rgba(31, 86, 115, 0));
 }
