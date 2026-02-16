@@ -147,15 +147,15 @@ button:hover {
 
 @keyframes blink {
     to {
-        background-color: #ffffff;
-        color: #000000;
+        background: transparent;
+        color: #ffffff;
     }
 }
 
 /* Using steps() instead of linear as a timing function to limit cpu usage*/
 #battery.critical:not(.charging) {
     background: linear-gradient(180deg,
-        rgba(217, 30, 54, 0.8),
+        rgba(217, 30, 54, 1),
         rgba(217, 30, 54, 0));
     color: #ffffff;
     animation-name: blink;

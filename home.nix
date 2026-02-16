@@ -74,20 +74,102 @@
   #Cava
   programs.cava = {
     enable = true;
-  #  settings = {
-  #    general.framerate = 60;
-  #    general.autosens = 1;
-  #    input.method = "pipewire";
-      #input.source = "auto";
-  #    input.latency = 0;
-  #    input.sample_rate = 44100;
-  #  };
   };
   
-  #Niri and Setup
-  programs.swaylock.enable = true; # Super+Alt+L in the default setting (screen locker)
-  services.mako.enable = true; # notification daemon
-  services.swayidle.enable = true; # idle management daemon
+  #Swaylock
+  programs.swaylock = {
+    enable = true;
+    settings = {
+      image = "/home/adam/Pictures/Wallpapers/Wallpaper3.png";
+      color = "808080";
+      font-size = 24;
+      indicator-idle-visible = true;
+      indicator-radius = 100;
+      line-color = "ffffffbf";
+      show-failed-attempts = true;
+      inside-ver-color = "06a710bf";
+      ring-ver-color = "#05830dbf";
+    };
+  };
+
+  services.swayidle =
+  let
+    # Lock command
+    lock = "${pkgs.swaylock}/bin/swaylock --daemonize";
+    # TODO: modify "display" function based on your window manager
+    # Sway
+    #display = status: "${pkgs.sway}/bin/swaymsg 'output * power ${status}'";
+    # Hyprland
+    # display = status: "hyprctl dispatch dpms ${status}";
+    # Niri
+    display = status: "${pkgs.niri}/bin/niri msg action power-${status}-monitors";
+  in
+  {
+    enable = true;
+    timeouts = [
+      {
+        timeout = 300; # in seconds
+        command = "${pkgs.libnotify}/bin/notify-send 'Locking in 5 minutes' -t 5000";
+      }
+      {
+        timeout = 600;
+        command = lock;
+      }
+      {
+        timeout = 900;
+        command = display "off";
+        resumeCommand = display "on";
+      }
+      {
+        timeout = 1200;
+        command = "${pkgs.systemd}/bin/systemctl suspend";
+      }
+    ];
+    events = [
+      {
+        event = "before-sleep";
+        # adding duplicated entries for the same event may not work
+        command = (display "off") + "; " + lock;
+      }
+      {
+        event = "after-resume";
+        command = display "on";
+      }
+      {
+        event = "lock";
+        command = (display "off") + "; " + lock;
+      }
+      {
+        event = "unlock";
+        command = display "on";
+      }
+    ];
+  };
+
+  #Mako - Notification Daemon 
+  services.mako = {
+    enable = true;
+    settings = {
+      "actionable=true" = {
+        anchor = "top-left";
+      };
+      actions = true;
+      anchor = "top-right";
+      background-color = "#000000";
+      border-color = "#FFFFFF";
+      border-radius = 0;
+      default-timeout = 0;
+      font = "monospace 10";
+      height = 100;
+      icons = true;
+      ignore-timeout = false;
+      layer = "top";
+      margin = 10;
+      markup = true;
+      width = 300;
+    };    
+  };
+
   services.polkit-gnome.enable = true; # polkit
   
   #Installing packages

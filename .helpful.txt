@@ -3,6 +3,20 @@ This is just a helpful text file containing stuff i learned in Nixos
 Programs are stored in "/etc/profiles/per-user/<yourname>/bin/<programname>
 
 ----------------------------------------------------------------------------
+
+MAN PAGES
+
+Man pages are incredibly useful pages
+
+Man pages are opened by typing:
+
+man <name_of_something>
+
+If you want to open the fifth man page of something:
+
+man 5 <name_of_something>
+
+----------------------------------------------------------------------------
 GIT
 
 To even run git first you need to:

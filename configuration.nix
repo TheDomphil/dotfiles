@@ -58,7 +58,7 @@ in
 
   # Enable the GNOME Desktop Environment.
   services.displayManager.gdm.enable = true; 
-  services.desktopManager.gnome.enable = true; #"true" for gnome
+  services.desktopManager.gnome.enable = false; #"true" for gnome
  
   # Configure keymap in X11
   services.xserver.xkb = {
@@ -69,15 +69,9 @@ in
   # Enable CUPS to print documents.
   services.printing.enable = true;
 
-  # MPD Installation
-  services.mpd = {
+  # Playerctl Installation
+  services.playerctld = {
     enable = true;
-    extraConfig = ''
-      audio_output {
-        type "pipewire"
-        name "My PipeWire Output"
-      }
-    '';
   };
 
   # Enable sound with pipewire.
