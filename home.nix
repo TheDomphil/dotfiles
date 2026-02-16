@@ -151,22 +151,24 @@
     enable = true;
     settings = {
       "actionable=true" = {
-        anchor = "top-left";
+        anchor = "top-right";
       };
       actions = true;
       anchor = "top-right";
-      background-color = "#000000";
-      border-color = "#FFFFFF";
-      border-radius = 0;
-      default-timeout = 0;
-      font = "monospace 10";
-      height = 100;
+      background-color = "#000000d9";
+      border-color = "#e8871ee6";
+      border-radius = 15;
+      default-timeout = 30000;
+      font = "monospace 12";
       icons = true;
       ignore-timeout = false;
       layer = "top";
       margin = 10;
       markup = true;
-      width = 300;
+      width = 350;
+      height = 150;
+      max-history = 3;
+      history = 1;
     };    
   };
 
