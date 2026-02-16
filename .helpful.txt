@@ -34,3 +34,13 @@ git commit -m "Message"
 git push
 
 
+----------------------------------------------------------------------------
+
+Emacs
+
+Reload Emacs: Strg + Alt + X
+
+Commands:
+
+Strg + F (forward -> Move 1 step forward)
+
