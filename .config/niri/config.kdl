@@ -149,7 +149,7 @@ layout {
         // - CSS-like notation: "rgb(255, 127, 0)", rgba(), hsl() and a few others.
 
         // Color of the ring on the active monitor.
-        active-color "#7fc8ff"
+        active-color "#e8871e"
 
         // Color of the ring on inactive monitors.
         //
@@ -180,7 +180,7 @@ layout {
         off
 
         width 4
-        active-color "#ffc87f"
+        active-color "#849984"
         inactive-color "#505050"
 
         // Color of the border around windows that request your attention.
