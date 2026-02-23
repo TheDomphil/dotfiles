@@ -2,6 +2,27 @@
 (setq inhibit-startup-message t)
 (setq use-file-dialog nil)
 
+(setq initial-scratch-message
+      ";;Hello Adam, Welcome!\n
+;; Important keys:\n
+;; C-x C-f\tFind File
+;; C-g\t\tCancel Command
+;; C-x b\tSwitch Buffer
+;; C-x 1\tKill everything except current window
+;; C-x o\tSwitch to other window
+;; M-x\t\tRun command
+;; C-h\t\tHelp
+;; C-x C-f /sudo::/path/to/file\tOpen file in sudo
+;; C-/\t\tUndo
+;; C-Space\tSet mark
+;; C-w\t\tCut from mark
+;; C-x- g\tMagit
+;; S\tStage (git add .)
+;; c c\tCommit (git commit)
+;; C-c C-c\t(save the message)
+;; P p\tPush 
+")
+
 ;; Display line numbers in every buffer
 (global-display-line-numbers-mode 1)
 
@@ -34,6 +55,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(default ((t (:foreground "#acacac")))) ;;Change this maybe
  '(font-lock-comment-face ((t (:foreground "#acacac"))))
  '(line-number ((t (:foreground "#acacac")))))
 
@@ -77,14 +99,19 @@
          (lsp-mode . lsp-enable-which-key-integration))
   :commands lsp)
 
-;; V-Term
+;; V-Term - No line numbers for vterm
 (use-package vterm
-  :ensure t)
+  :ensure t
+  :config
+  (add-hook 'vterm-mode-hook
+	    (lambda()
+	      (display-line-numbers-mode 0))))
+
+
 
 ;; Vertico (Completion)
 (use-package vertico
-  :config
-  (vertico-mode))
+  :config (vertico-mode))
 
 
 (custom-set-variables
