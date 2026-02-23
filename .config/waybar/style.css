@@ -130,7 +130,7 @@ button:hover {
     padding: 0px 15px 0px 15px;
 }
 
-#network, #cpu, #memory, #battery, #temperature {
+#network, #cpu, #memory, #battery, #temperature, #power-profiles-daemon {
     border-radius: 15px 15px 0px 0px;
     background: linear-gradient(180deg,
         rgba(117, 72, 94, 0.8),
@@ -173,7 +173,7 @@ button:hover {
 
 #custom-power {
     font-family: FontAwesome;
-    font-size: 18px;
+    font-size: 14px;
     border-radius: 15px 15px 0px 0px;
     background: linear-gradient(180deg,
         rgba(31, 86, 115, 0.8),

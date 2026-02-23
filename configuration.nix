@@ -74,6 +74,11 @@ in
     enable = true;
   };
 
+  # Power-Profile-Daemon
+  services.power-profiles-daemon = {
+    enable = true;
+  };
+
   # Enable sound with pipewire.
   security.rtkit.enable = true;
   services.pipewire = {
@@ -89,7 +94,6 @@ in
     # no need to redefine it in your config for now)
     #media-session.enable = true;
   };
-
 
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
@@ -115,15 +119,29 @@ in
   #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
   #  wget
     xwayland
+    xwayland-satellite #NixOS wiki recommended
     brightnessctl
     brave
     pavucontrol
+    libreoffice
+    coreutils
+    fd
+    clang
+    gcc
+    qbittorrent
   ];
   
   # Fonts  
   fonts.packages = with pkgs; [
     font-awesome
   ];
+
+  # Automatic garbage collection:
+  nix.gc = {
+    automatic = true;
+    dates = "weekly";
+    options = "--delete-older-than 30d";
+  };
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.

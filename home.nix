@@ -14,6 +14,7 @@
       nrs = "sudo nixos-rebuild switch";
       ls = "ls -a --color=auto";
       network = "nmtui";
+      emacs = "emacs -nw";
     };
   };
   
@@ -90,6 +91,13 @@
       inside-ver-color = "06a710bf";
       ring-ver-color = "#05830dbf";
     };
+  };
+  
+  programs.emacs = {
+    enable = true;
+    extraPackages = epkgs: [
+    	epkgs.doom-themes
+    ];
   };
 
   services.swayidle =
@@ -178,5 +186,10 @@
   home.packages = with pkgs; [
     bat
     swaybg #wallpaper
+    clang-tools
+    gnumake
+    cmake
+    libtool
+    
   ];
 }
