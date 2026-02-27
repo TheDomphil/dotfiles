@@ -16,6 +16,7 @@
       network = "nmtui";
       emacs = "emacs -nw";
     };
+    initExtra = "fastfetch";
   };
   
   #Alacritty - Super+T in the default setting (terminal)
@@ -98,6 +99,10 @@
     extraPackages = epkgs: [
     	epkgs.doom-themes
     ];
+  };
+
+  programs.vscode = {
+    enable = true;
   };
 
   services.swayidle =
@@ -190,6 +195,6 @@
     gnumake
     cmake
     libtool
-    
+    fastfetch
   ];
 }
