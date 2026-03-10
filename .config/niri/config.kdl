@@ -337,6 +337,7 @@ binds {
     Mod+L repeat=false { spawn-sh "swaylock"; }
     // Suggested binds for running programs: terminal, app launcher, screen locker.
     Mod+Space hotkey-overlay-title="Open a Terminal: alacritty" { spawn "alacritty"; }
+    Mod+E repeat=false hotkey-overlay-title="Open File Explorer" { spawn "thunar"; }
     Mod+D hotkey-overlay-title="Run an Application: fuzzel" { spawn "fuzzel"; }
     Super+Alt+L hotkey-overlay-title="Lock the Screen: swaylock" { spawn "swaylock"; }
 

@@ -79,6 +79,9 @@ in
     enable = true;
   };
 
+  # USB-Automation
+  services.udisks2.enable = true;
+
   # Enable sound with pipewire.
   security.rtkit.enable = true;
   services.pipewire = {
@@ -109,6 +112,7 @@ in
   };
 
   programs.niri.enable = true;
+  programs.thunar.enable = true;
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
@@ -131,6 +135,8 @@ in
     qbittorrent
     rustc
     cargo
+    jetbrains.clion
+    jetbrains.datagrip
   ];
   
   # Fonts  
