@@ -82,6 +82,15 @@ in
   # USB-Automation
   services.udisks2.enable = true;
 
+  # Fingerprint
+  services.fprintd.enable = true;
+  services.gnome.gnome-keyring.enable = false; #disables authentication message
+  security.pam.services = {
+    sudo.fprintAuth = false;
+    sddm.fprintAuth = true;
+    swaylock.fprintAuth = false;
+  };
+
   # Enable sound with pipewire.
   security.rtkit.enable = true;
   services.pipewire = {
@@ -110,6 +119,14 @@ in
     #  thunderbird
     ];
   };
+  
+  # Set tmp folder
+  boot.tmp.useTmpfs = false;
+  fileSystems."/home/adam/tmp" = {
+    device = "/tmp";
+    options = [ "bind" ];
+  };
+  boot.tmp.cleanOnBoot = true;
 
   programs.niri.enable = true;
   programs.thunar.enable = true;
